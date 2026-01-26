@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다사자 DASAJA | 韓國代購報價機</title>
+    <style>
+        :root {
+            --primary-color: #5d4037; 
+            --accent-color: #ffb300;  
+            --bg-color: #fffdf9;      
+            --table-border: #f0e6d2;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px; /* 縮小邊距 */
+            color: #333;
+            margin: 0;
+        }
+        .calculator-card {
+            background: white;
+            padding: 15px; /* 縮小內邊距 */
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+            margin-bottom: 15px;
+            position: sticky;
+            top: 5px;
+            z-index: 100;
+            border: 2px solid var(--accent-color);
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        .username-tag {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .input-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        input {
+            width: 100%;
+            padding: 8px 12px; /* 縮小輸入框大細 */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fffcf5;
+        }
+        .result-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px dashed #eee;
+            padding-top: 10px;
+        }
+        .total-line {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent-color);
+        }
+        .order-btn {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .about-section {
+            background: #fff9e6;
+            padding: 12px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 380px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px dashed var(--accent-color);
+        }
+        .about-section p { font-size: 0.75rem; line-height: 1.4; margin: 0; color: var(--primary-color); }
+        .about-title { font-weight: bold; display: block; margin-bottom: 3px; font-size: 0.85rem; }
+
+        .reference-card {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            width: 100%;
+            max-width: 380px;
+            box-sizing: border-box;
+        }
+        h3 {
+            font-size: 0.95rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .cat-title { background:#fffcf0; font-weight:bold; color: var(--primary-color); padding: 10px; cursor: default; }
+        td { padding: 10px; border-bottom: 1px solid var(--table-border); cursor: pointer; }
+        td:last-child { text-align: right; color: #d4a017; font-weight: 600; }
+        tr:hover td { background-color: #fff9e6; }
+        .footer-note { font-size: 0.7rem; color: #aaa; text-align: center; margin-top: 20px; line-height: 1.5; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="calculator-card">
+    <h2>다사자 DASAJA</h2>
+    <span class="username-tag">IG: dasaja.kr</span>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label>韓幣 KRW</label>
+            <input type="number" id="krwPrice" placeholder="金額" oninput="calculate()">
+        </div>
+        <div class="input-group">
+            <label>重量 kg</label>
+            <input type="number" id="weight" step="0.1" placeholder="重量" oninput="calculate()">
+        </div>
+    </div>
+
+    <div class="result-area">
+        <div>
+            <span style="font-size: 0.75rem; color: #888;">預計總額:</span>
+            <div class="total-line" id="outTotal">$0</div>
+        </div>
+        <a href="https://www.instagram.com/dasaja_kr/" class="order-btn" target="_blank">📲 落單</a>
+    </div>
+</div>
+
+<div class="about-section">
+    <span class="about-title">Hi! 我係 DASAJA 店主 🦁</span>
+    <p>「다 사자」都買吧！報價已包貨價及國際運費，無隱藏收費。</p>
+</div>
+
+<div class="reference-card">
+    <h3>📌 重量參考 (點擊填入)</h3>
+    <table>
+        <tbody>
+            <tr><td colspan="2" class="cat-title">💿 K-Pop 專輯 & 週邊</td></tr>
+            <tr onclick="fillWeight(0.5)"><td>一般專輯 (Mini Album)</td><td>0.5 kg</td></tr>
+            <tr onclick="fillWeight(1.0)"><td>正規大碟 / 豪華版</td><td>1.0 kg</td></tr>
+            <tr onclick="fillWeight(0.6)"><td>應援手燈 (Lightstick)</td><td>0.6 kg</td></tr>
+            <tr onclick="fillWeight(0.1)"><td>POCA版 / 小卡組</td><td>0.1 kg</td></tr>
+            
+            <tr><td colspan="2" class="cat-title">👜 手袋 & 飾品</td></tr>
+            <tr onclick="fillWeight(0.2)"><td>短銀包 / 卡片套</td><td>0.2 kg</td></tr>
+            <tr onclick="fillWeight(0.8)"><td>皮製側孭袋 / 背包</td><td>0.8 kg</td></tr>
+            <tr onclick="fillWeight(1.2)"><td>托特包 (Tote Bag)</td><td>1.2 kg</td></tr>
+            <tr onclick="fillWeight(0.1)"><td>戒指 / 耳環 / 飾品</td><td>0.1 kg</td></tr>
+
+            <tr><td colspan="2" class="cat-title">💄 美妝護膚</td></tr>
+            <tr onclick="fillWeight(0.15)"><td>唇膏 / 眼影 / 眉筆</td><td>0.15 kg</td></tr>
+            <tr onclick="fillWeight(0.3)"><td>洗臉奶 / 卸妝膏 / 粉底</td><td>0.3 kg</td></tr>
+            <tr onclick="fillWeight(0.4)"><td>標準爽膚水 / 面霜</td><td>0.4 kg</td></tr>
+            <tr onclick="fillWeight(0.6)"><td>大容量爽膚水 / 卸妝水</td><td>0.6 kg</td></tr>
+
+            <tr><td colspan="2" class="cat-title">👕 衣服鞋襪</td></tr>
+            <tr onclick="fillWeight(0.3)"><td>T-Shirt / 襯衫</td><td>0.3 kg</td></tr>
+            <tr onclick="fillWeight(0.5)"><td>連身裙 / 長裙</td><td>0.5 kg</td></tr>
+            <tr onclick="fillWeight(0.6)"><td>薄身外套 / 風褸</td><td>0.6 kg</td></tr>
+            <tr onclick="fillWeight(0.8)"><td>牛仔褲 / 衛衣</td><td>0.8 kg</td></tr>
+            <tr onclick="fillWeight(1.2)"><td>厚身外套 / 鞋類</td><td>1.2 kg</td></tr>
+            <tr onclick="fillWeight(1.8)"><td>長款大褸 / 羽絨</td><td>1.8 kg</td></tr>
+        </tbody>
+    </table>
+
+    <div class="footer-note">
+        * 匯率 1:153 | 預計運費 $32/kg<br>
+        * 如貨品體積過大（如枕頭，被鋪等），請DM查詢運費。<br>
+        * 다사자 DASAJA ‧ dasaja.kr
+    </div>
+</div>
+
+<script>
+    function calculate() {
+        const krw = document.getElementById('krwPrice').value;
+        const weight = document.getElementById('weight').value;
+        let p = 0; let s = 0;
+        if (krw > 0) { p = Math.ceil((krw / 1000) * 6.5); }
+        if (weight > 0) { s = Math.ceil(weight * 32); }
+        document.getElementById('outTotal').innerText = (p + s) > 0 ? '$' + (p + s) : '$0';
+    }
+    function fillWeight(w) {
+        document.getElementById('weight').value = w;
+        calculate();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
