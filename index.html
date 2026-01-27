@@ -17,13 +17,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px; /* 縮小邊距 */
+            padding: 10px;
             color: #333;
             margin: 0;
         }
         .calculator-card {
             background: white;
-            padding: 15px; /* 縮小內邊距 */
+            padding: 15px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(255, 179, 0, 0.1);
             width: 100%;
@@ -35,94 +35,21 @@
             border: 2px solid var(--accent-color);
             box-sizing: border-box;
         }
-        h2 {
-            text-align: center;
-            font-size: 1.1rem;
-            margin: 0 0 5px 0;
-            color: var(--primary-color);
-        }
-        .username-tag {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .input-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .input-group {
-            flex: 1;
-        }
-        label {
-            display: block;
-            font-size: 0.8rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        input {
-            width: 100%;
-            padding: 8px 12px; /* 縮小輸入框大細 */
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-size: 0.95rem;
-            outline: none;
-            background: #fffcf5;
-        }
-        .result-area {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px dashed #eee;
-            padding-top: 10px;
-        }
-        .total-line {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--accent-color);
-        }
-        .order-btn {
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-        .about-section {
-            background: #fff9e6;
-            padding: 12px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 380px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-            border: 1px dashed var(--accent-color);
-        }
+        h2 { text-align: center; font-size: 1.1rem; margin: 0 0 5px 0; color: var(--primary-color); }
+        .username-tag { text-align: center; font-size: 0.75rem; color: #aaa; margin-bottom: 10px; display: block; }
+        .input-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .input-group { flex: 1; }
+        label { display: block; font-size: 0.8rem; margin-bottom: 4px; font-weight: 600; color: var(--primary-color); }
+        input { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 0.95rem; outline: none; background: #fffcf5; }
+        .result-area { display: flex; align-items: center; justify-content: space-between; border-top: 1px dashed #eee; padding-top: 10px; }
+        .total-line { font-size: 1.6rem; font-weight: 900; color: var(--accent-color); }
+        .order-btn { background-color: var(--primary-color); color: white; text-decoration: none; padding: 8px 15px; border-radius: 10px; font-weight: bold; font-size: 0.85rem; }
+        .about-section { background: #fff9e6; padding: 12px; border-radius: 15px; width: 100%; max-width: 380px; margin-bottom: 15px; box-sizing: border-box; border: 1px dashed var(--accent-color); }
         .about-section p { font-size: 0.75rem; line-height: 1.4; margin: 0; color: var(--primary-color); }
         .about-title { font-weight: bold; display: block; margin-bottom: 3px; font-size: 0.85rem; }
 
-        .reference-card {
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            width: 100%;
-            max-width: 380px;
-            box-sizing: border-box;
-        }
-        h3 {
-            font-size: 0.95rem;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 10px;
-            margin: 0 0 10px 0;
-            color: var(--primary-color);
-        }
+        .reference-card { background: white; padding: 15px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); width: 100%; max-width: 380px; box-sizing: border-box; }
+        h3 { font-size: 0.95rem; border-left: 4px solid var(--accent-color); padding-left: 10px; margin: 0 0 10px 0; color: var(--primary-color); }
         table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
         .cat-title { background:#fffcf0; font-weight:bold; color: var(--primary-color); padding: 10px; cursor: default; }
         td { padding: 10px; border-bottom: 1px solid var(--table-border); cursor: pointer; }
@@ -140,7 +67,7 @@
     <div class="input-row">
         <div class="input-group">
             <label>韓幣 KRW</label>
-            <input type="number" id="krwPrice" placeholder="金額" oninput="calculate()">
+            <input type="number" id="krwPrice" placeholder="請先輸入價錢" oninput="calculate()">
         </div>
         <div class="input-group">
             <label>重量 kg</label>
@@ -153,13 +80,13 @@
             <span style="font-size: 0.75rem; color: #888;">預計總額:</span>
             <div class="total-line" id="outTotal">$0</div>
         </div>
-        <a href="https://wa.me/message/MAGVVOHIURHOE1" class="order-btn" target="_blank">📲 落單</a>
+        <a href="https://www.instagram.com/dasaja.kr/" class="order-btn" target="_blank">📲 前往落單</a>
     </div>
 </div>
 
 <div class="about-section">
-    <span class="about-title">Hi! 我係 DASAJA 店主 🦁</span>
-    <p>「다 사자」都買吧！報價已包貨價及國際運費，無隱藏收費。</p>
+    <span class="about-title">「다 사자」都買吧！ 🦁</span>
+    <p>請先輸入貨品原價，再選擇預計重量。報價已包貨價及國際運費，無隱藏收費。</p>
 </div>
 
 <div class="reference-card">
@@ -206,17 +133,29 @@
 
 <script>
     function calculate() {
-        const krw = document.getElementById('krwPrice').value;
-        const weight = document.getElementById('weight').value;
-        let p = 0; let s = 0;
-        if (krw > 0) { p = Math.ceil((krw / 1000) * 6.5); }
-        if (weight > 0) { s = Math.ceil(weight * 32); }
-        document.getElementById('outTotal').innerText = (p + s) > 0 ? '$' + (p + s) : '$0';
+        var krwInput = document.getElementById('krwPrice').value;
+        var weightInput = document.getElementById('weight').value;
+        var display = document.getElementById('outTotal');
+
+        if (krwInput && parseFloat(krwInput) > 0) {
+            var p = Math.ceil((parseFloat(krwInput) / 1000) * 6.5);
+            var s = 0;
+            if (weightInput && parseFloat(weightInput) > 0) {
+                s = Math.ceil(parseFloat(weightInput) * 32);
+            }
+            display.innerText = '$' + (p + s);
+        } else {
+            display.innerText = '$0';
+        }
     }
+
     function fillWeight(w) {
-        document.getElementById('weight').value = w;
-        calculate();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var weightField = document.getElementById('weight');
+        if (weightField) {
+            weightField.value = w;
+            calculate();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
 </script>
 
